@@ -1,9 +1,11 @@
 import './App.css';
+import Memory from './Components/memory';
 
 function App() {
   return (
     <div className="App">
-      </div>
+      <Memory />
+    </div>
   );
 }
 
