@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const TILE_COLORS = ['red', 'green', 'blue', 'yellow'];
 
 export default function Memory() {
-    const [board, setsetBoard] = useState(() =>
+    const [board, setBoard] = useState(() =>
         shuffle([...TILE_COLORS, ...TILE_COLORS])
     );
     const [selectedTiles, setSelectedTiles] = useState([]);
@@ -23,12 +23,20 @@ export default function Memory() {
   
 
     const selectTile = (index) => {
-        if(selectedTiles.length >= 2 || selectedTiles.includes(index)) return;
+        if(selectedTiles.length >= 2 || selectedTiles.includes(index) || matchedTiles.includes(index)) return;
         setSelectedTiles([...selectedTiles, index]);
     }
 
+    const didPlayerWin = matchedTiles.length === board.length;
+
+    const reStartGame = () => {
+        setBoard(shuffle([...TILE_COLORS, ...TILE_COLORS]));
+        setSelectedTiles([]);
+        setMatchedTiles([]);
+    }
     return (
         <>
+        <h1>{didPlayerWin ? 'You Win!' : 'Memory'}</h1>
         <div className="board">
             {board.map((tileColor, i) => {
                 const isTurnedOver = selectedTiles.includes(i) || matchedTiles.includes(i);
@@ -38,6 +46,7 @@ export default function Memory() {
                 );
             })}
         </div>
+        {didPlayerWin && <button onClick={reStartGame}>Restart</button>}
         </>
     )
 }
