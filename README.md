@@ -9,3 +9,4 @@ Selected match tiles will remain until all tiles are matched.
 Header will be changed to "You Win!" once all matching tiles has been found and a restart button will be available as well.
 
 This is made using React.js.
+
