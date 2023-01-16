@@ -29,7 +29,7 @@ export default function Memory() {
 
     const didPlayerWin = matchedTiles.length === board.length;
 
-    const reStartGame = () => {
+    const restartGame = () => {
         setBoard(shuffle([...TILE_COLORS, ...TILE_COLORS]));
         setSelectedTiles([]);
         setMatchedTiles([]);
@@ -46,7 +46,7 @@ export default function Memory() {
                 );
             })}
         </div>
-        {didPlayerWin && <button onClick={reStartGame}>Restart</button>}
+        {didPlayerWin && <button onClick={restartGame}>Restart</button>}
         </>
     )
 }
